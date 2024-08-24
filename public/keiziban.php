@@ -75,17 +75,14 @@ $select_sth->execute();
                 bottom: 20px;
                 right: 20px;
             }
+            .form-container {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container my-4">
-        <!-- デスクトップ用の投稿ボタン（サイド） -->
-        <button type="button" class="btn btn-primary side-btn" data-bs-toggle="modal" data-bs-target="#postModal">
-            投稿する
-        </button>
-
-        <!-- フォーム（デスクトップ用） -->
         <div class="form-container mb-4">
             <form method="POST" action="./keiziban.php">
                 <div class="mb-3">
@@ -94,6 +91,10 @@ $select_sth->execute();
                 <button type="submit" class="btn btn-primary">送信</button>
             </form>
         </div>
+
+        <button type="button" class="btn btn-primary side-btn" data-bs-toggle="modal" data-bs-target="#postModal">
+            投稿する
+        </button>
 
         <div class="mb-4">
             <?= $page ?>ページ目
@@ -146,8 +147,8 @@ $select_sth->execute();
     </div>
 
     <!-- スマホ用フローティングボタン -->
-    <button type="button" class="btn btn-primary floating-btn" data-bs-toggle="modal" data-bs-target="#postModal">
-        投稿する
+    <button type="button" class="btn btn-lg btn-primary floating-btn" data-bs-toggle="modal" data-bs-target="#postModal">
+        +
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
