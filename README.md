@@ -22,5 +22,12 @@
     `text` text NOT NULL,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
     `parent_id` INT DEFAULT NULL,
-);
+    );
    ```
+
+## ポイント
+- hogehogeではないテーブルを実装した。具体的にはid,内容,投稿日時が保存されるようにした。
+- もしレスアンカーが実装できた時用に親idも作ってあります。
+- bootstarpを使ってスマホでも見やすく、レスポンシブなデザインをした。
+- デスクトップ版はページトップとサイドに投稿ボタンがあり、スマホ版はサイドのみとなっています。
+- サイドからの投稿はモーダル表示されるように実装しました。
