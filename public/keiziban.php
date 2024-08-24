@@ -52,38 +52,10 @@ $select_sth->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投稿一覧</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <style>
-        /* デスクトップ用のボタン位置 */
-        @media (min-width: 769px) {
-            .side-btn {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-            }
-            .floating-btn {
-                display: none;
-            }
-        }
-
-        /* スマホ用のボタン位置 */
-        @media (max-width: 768px) {
-            .side-btn {
-                display: none;
-            }
-            .floating-btn {
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-            }
-            .form-container {
-                display: none;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container my-4">
-        <div class="form-container mb-4">
+        <div class="form-container mb-4 d-none d-md-block">
             <form method="POST" action="./keiziban.php">
                 <div class="mb-3">
                     <textarea name="body" class="form-control" rows="3" placeholder="投稿内容"></textarea>
@@ -92,7 +64,7 @@ $select_sth->execute();
             </form>
         </div>
 
-        <button type="button" class="btn btn-primary side-btn" data-bs-toggle="modal" data-bs-target="#postModal">
+        <button type="button" class="btn btn-primary position-fixed bottom-0 end-0 m-4 d-none d-md-block" data-bs-toggle="modal" data-bs-target="#postModal">
             投稿する
         </button>
 
@@ -147,7 +119,7 @@ $select_sth->execute();
     </div>
 
     <!-- スマホ用フローティングボタン -->
-    <button type="button" class="btn btn-lg btn-primary floating-btn" data-bs-toggle="modal" data-bs-target="#postModal">
+    <button type="button" class="btn btn-lg btn-primary position-fixed bottom-0 end-0 m-4 d-md-none" data-bs-toggle="modal" data-bs-target="#postModal">
         +
     </button>
 
