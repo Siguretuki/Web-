@@ -52,16 +52,48 @@ $select_sth->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投稿一覧</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        /* デスクトップ用のボタン位置 */
+        @media (min-width: 769px) {
+            .side-btn {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+            }
+            .floating-btn {
+                display: none;
+            }
+        }
+
+        /* スマホ用のボタン位置 */
+        @media (max-width: 768px) {
+            .side-btn {
+                display: none;
+            }
+            .floating-btn {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container my-4">
-        <!-- フォームのPOST先はこのファイル自身にする -->
-        <form method="POST" action="./keiziban.php" class="mb-4">
-            <div class="mb-3">
-                <textarea name="body" class="form-control" rows="3" placeholder="投稿内容"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">送信</button>
-        </form>
+        <!-- デスクトップ用の投稿ボタン（サイド） -->
+        <button type="button" class="btn btn-primary side-btn" data-bs-toggle="modal" data-bs-target="#postModal">
+            投稿する
+        </button>
+
+        <!-- フォーム（デスクトップ用） -->
+        <div class="form-container mb-4">
+            <form method="POST" action="./keiziban.php">
+                <div class="mb-3">
+                    <textarea name="body" class="form-control" rows="3" placeholder="投稿内容"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">送信</button>
+            </form>
+        </div>
 
         <div class="mb-4">
             <?= $page ?>ページ目
@@ -92,6 +124,31 @@ $select_sth->execute();
             </div>
         <?php endforeach ?>
     </div>
+
+    <!-- モーダル -->
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postModalLabel">投稿フォーム</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="./keiziban.php">
+                        <div class="mb-3">
+                            <textarea name="body" class="form-control" rows="3" placeholder="投稿内容"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">送信</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- スマホ用フローティングボタン -->
+    <button type="button" class="btn btn-primary floating-btn" data-bs-toggle="modal" data-bs-target="#postModal">
+        投稿する
+    </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
