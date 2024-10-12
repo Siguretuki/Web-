@@ -21,7 +21,7 @@
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `text` text NOT NULL,
     `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-    `parent_id` INT DEFAULT NULL,
+    `parent_id` INT DEFAULT NULL
     );
    ```
 
