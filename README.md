@@ -24,7 +24,7 @@
     `parent_id` INT DEFAULT NULL
     );
    ```
-5.toukou.phpにアクセスしてhelloworldをインサート
+5. toukou.phpにアクセスしてhelloworldをインサート
 
 ## ポイント
 - hogehogeではないテーブルを実装した。具体的にはid,内容,投稿日時が保存されるようにした。
